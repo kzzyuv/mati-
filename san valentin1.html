@@ -1,0 +1,148 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            /* Establecer imagen de fondo */
+            background-image: url('bocaa.jpg'); /* Cambia esta ruta según corresponda */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* GIF de corazones superpuestos */
+        .gif-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Este valor asegura que el GIF quede por encima del fondo, pero debajo de las tarjetas */
+            pointer-events: none; /* Hace que el GIF no interfiera con la interacción de los elementos en la página */
+        }
+
+        .card, .thank-you {
+            background: white;
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease-in-out;
+            position: relative;
+            z-index: 2; /* Asegura que las tarjetas estén por encima del GIF */
+        }
+
+        h1 {
+            color: black;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .no {
+            background-color: #666;
+            color: white;
+            position: absolute;
+        }
+
+        /* Estilos para la página de agradecimiento */
+        .thank-you {
+            display: none;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff4d4d;
+        }
+
+        .gif-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para el GIF en la segunda pantalla */
+        .gif-thank-you {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GIF de corazones flotantes superpuesto -->
+    <div class="gif-overlay">
+        <img src="cora48.gif" alt="Corazones flotantes" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Primera pantalla -->
+    <div class="card" id="questionCard">
+        <div class="gif-container">
+            <!-- GIF cargado desde archivo local -->
+            <img src="messi.gif" alt="gif" width="100%">
+        </div>
+        <h1>Mati ¿Quieres ser mi San Valentín? ❤️</h1>
+        <div class="buttons">
+            <button class="btn yes" onclick="showThankYou()">Sí</button>
+            <button class="btn no" onmouseover="moveNo()" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <!-- Pantalla de agradecimiento -->
+    <div class="thank-you" id="thankYouCard">
+        <h1>Ojito donde hubieras dicho que neh 😾 
+        igual tampoco podias JJAJAJJA </h1>
+        <p>Te amo mucho amor de mi vida</p>
+        <!-- GIF de Gaturro -->
+        <div class="gif-container">
+            <img src="gaturro.gif" alt="Gaturro gif" class="gif-thank-you">
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar la pantalla de agradecimiento
+        function showThankYou() {
+            document.getElementById("questionCard").style.display = "none";
+            document.getElementById("thankYouCard").style.display = "block";
+        }
+
+        // Función para mover el botón "No" aleatoriamente cuando el mouse pasa por encima
+        function moveNo() {
+            let btn = document.getElementById("noBtn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        }
+    </script>
+
+</body>
+</html>
